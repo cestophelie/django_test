@@ -28,6 +28,31 @@ class AccountsViewset(viewsets.ModelViewSet):
     serializer_class = AccountsSerializer
 
 
+class CheckAccountViewset(viewsets.ModelViewSet):
+    queryset = Accounts.objects.all()
+    serializer_class = AccountsSerializer
+
+    def create(self, request):
+        post_data = request.data
+        print('Posted from ANDROID')
+        print(post_data)
+
+        checkID = post_data['checkID']
+        checkPW = post_data['checkPW']
+
+        # me = Accounts.objects.filter(identify='sewon')
+
+        if Accounts.objects.filter(identify=checkID).exists():
+            if Accounts.objects.filter(password=checkPW).exists():
+                print('yay')
+                return Response(status=200)
+        # return Response(data='heyhey')
+        #         return Response(status=200)
+        return Response(status=400)
+        # else:
+        #     return Response(status=400)
+
+
 class PostViewset(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer

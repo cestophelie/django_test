@@ -34,6 +34,7 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register(r'posts', views.PostViewset)
 router.register(r'accounts', views.AccountsViewset)
+router.register(r'check', views.CheckAccountViewset)
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
