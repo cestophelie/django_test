@@ -6,4 +6,5 @@
 .idea
 *.iml
 out
-gen'u2net.pth' 
+gen
+'u2net.pth'

@@ -22,6 +22,7 @@ import string
 
 # Create your views here.
 # 이 부분 추가
+# is it working?
 class AccountsViewset(viewsets.ModelViewSet):
     queryset = Accounts.objects.all()
     serializer_class = AccountsSerializer
