@@ -2,13 +2,11 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 
+# model 과 serializers import
 from .serializers import PostSerializer
 from .models import Post
-
-# 이 부분 추가
 from .serializers import AccountsSerializer
 from .models import Accounts
-# ----
 
 from django.core.files.storage import FileSystemStorage
 
@@ -20,9 +18,6 @@ import random
 import string
 
 
-# Create your views here.
-# 이 부분 추가
-# is it working?
 class AccountsViewset(viewsets.ModelViewSet):
     queryset = Accounts.objects.all()
     serializer_class = AccountsSerializer
@@ -46,11 +41,8 @@ class CheckAccountViewset(viewsets.ModelViewSet):
             if Accounts.objects.filter(password=checkPW).exists():
                 print('yay')
                 return Response(status=200)
-        # return Response(data='heyhey')
-        #         return Response(status=200)
+
         return Response(status=400)
-        # else:
-        #     return Response(status=400)
 
 
 class PostViewset(viewsets.ModelViewSet):
@@ -60,6 +52,7 @@ class PostViewset(viewsets.ModelViewSet):
     def create(self, request):  # Here is the new update comes <<<<
         post_data = request.data
         fileObj = request.FILES['image']
+        userAccount = post_data['title']
 
         print('-----------')
         print('POST DATA : ' + str(post_data))
@@ -90,7 +83,7 @@ class PostViewset(viewsets.ModelViewSet):
 
         # DB 테이블에 직접 값 넣어주기
         db_file_url = file_url
-        Subs = Post.objects.create(title=file_name, image=db_file_url)
+        Subs = Post.objects.create(title=userAccount, image=db_file_url)
         Subs.save()
 
         thread = threading.Thread(target=self.hiya, args=(file_url,))
@@ -101,7 +94,7 @@ class PostViewset(viewsets.ModelViewSet):
         # return Response(data=str(testimage))
 
     def hiya(self, file_url):
+        # 이 부분은 multithreading 으로 처리해야겠다.
+        # 근데 일단 create메소드 안에 들어가는 순간 mysql에는 안 들어가니까 create 메소드 안에 뭔가를 추가해줘야 할 것 같다.
         command = 'python C:/Users/sewon/django_test/mytestsite/bg_removal/u2net_test.py ' + str(file_url)
         os.system(command)
-    # 이 부분은 multithreading 으로 처리해야겠다.
-    # 근데 일단 create메소드 안에 들어가는 순간 mysql에는 안 들어가니까 create 메소드 안에 뭔가를 추가해줘야 할 것 같다.
