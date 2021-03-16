@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'bg_removal',
         'USER': 'root',  # MySQL 사용자 계정
         'PASSWORD': 'luvmyself42^^',  # MySQL 패스워드
-        'HOST': '127.0.0.1',
+        'HOST': '13.209.76.218',
         'PORT': "3306"
     }
 }
