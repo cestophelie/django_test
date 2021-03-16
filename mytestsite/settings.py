@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +29,7 @@ SECRET_KEY = '-g@)o1v9k*cgh!o!9wb)=ac_6d^6ybfm*u1zh+ssqcbuyquonh'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost', '127.0.0.1', '172.30.1.27', '*', '.ap-northeast-2.compute.amazonaws.com'  # 로컬과 고유 IP 에서 접속할 수 있도록 해줌.
+    'localhost', '127.0.0.1', '172.30.1.27', '*', '.amazonaws.com'  # 로컬과 고유 IP 에서 접속할 수 있도록 해줌.
 ]
 
 # Application definition
@@ -84,9 +87,11 @@ DATABASES = {
         # 여기에 MySQL 추가하기
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bg_removal',
-        'USER': 'root',  # MySQL 사용자 계정
+        # 'USER': 'root',  # MySQL 사용자 계정
+        'USER' : 'admin',
         'PASSWORD': 'luvmyself42^^',  # MySQL 패스워드
-        'HOST': '13.209.76.218',
+        # 'HOST': '13.209.76.218',
+        'HOST' : 'bg-removal.cgwtcvieozxk.ap-northeast-2.rds.amazonaws.com',
         'PORT': "3306"
         # 'HOST': '127.0.0.1',
         # 'PORT': ""
