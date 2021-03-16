@@ -16,6 +16,7 @@ from tensorflow.keras.preprocessing.image import load_img
 import threading
 import random
 import string
+import time
 
 
 class AccountsViewset(viewsets.ModelViewSet):
@@ -50,6 +51,7 @@ class PostViewset(viewsets.ModelViewSet):
     serializer_class = PostSerializer
 
     def create(self, request):  # Here is the new update comes <<<<
+        programStart1 = time.time()
         post_data = request.data
         fileObj = request.FILES['image']
         userAccount = post_data['title']
@@ -86,15 +88,18 @@ class PostViewset(viewsets.ModelViewSet):
         Subs = Post.objects.create(title=userAccount, image=db_file_url)
         Subs.save()
 
-        thread = threading.Thread(target=self.hiya, args=(file_url,))
+        thread = threading.Thread(target=self.hiya, args=(file_url, programStart1))
         thread.daemon = True
         thread.start()
 
         return Response(data='heyhey')
         # return Response(data=str(testimage))
 
-    def hiya(self, file_url):
+    def hiya(self, file_url, start_time):
         # 이 부분은 multithreading 으로 처리해야겠다.
         # 근데 일단 create메소드 안에 들어가는 순간 mysql에는 안 들어가니까 create 메소드 안에 뭔가를 추가해줘야 할 것 같다.
         command = 'python C:/Users/sewon/django_test/mytestsite/bg_removal/u2net_test.py ' + str(file_url)
         os.system(command)
+        programFinish = time.time()
+        print('duration of image processing : ')
+        print(programFinish - start_time)

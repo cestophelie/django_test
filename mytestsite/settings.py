@@ -26,7 +26,7 @@ SECRET_KEY = '-g@)o1v9k*cgh!o!9wb)=ac_6d^6ybfm*u1zh+ssqcbuyquonh'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost', '127.0.0.1', '172.30.1.27', '*', '.ap-northeast-2.compute.amazonaws.com'  # 로컬과 고유 IP 에서 접속할 수 있도록 해줌.
+    'localhost', '127.0.0.1', '172.30.1.27', '*'  # 로컬과 고유 IP 에서 접속할 수 있도록 해줌.
 ]
 
 # Application definition
@@ -86,8 +86,8 @@ DATABASES = {
         'NAME': 'bg_removal',
         'USER': 'root',  # MySQL 사용자 계정
         'PASSWORD': 'luvmyself42^^',  # MySQL 패스워드
-        'HOST': 'localhost',
-        'PORT': ""
+        'HOST': '127.0.0.1',
+        'PORT': "3306"
     }
 }
 
