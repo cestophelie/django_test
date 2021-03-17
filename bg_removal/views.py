@@ -17,6 +17,8 @@ import threading
 import random
 import string
 import time
+# added
+from pathlib import Path
 
 
 class AccountsViewset(viewsets.ModelViewSet):
@@ -98,6 +100,9 @@ class PostViewset(viewsets.ModelViewSet):
     def hiya(self, file_url, start_time):
         # 이 부분은 multithreading 으로 처리해야겠다.
         # 근데 일단 create메소드 안에 들어가는 순간 mysql에는 안 들어가니까 create 메소드 안에 뭔가를 추가해줘야 할 것 같다.
+        # BASE_DIR = Path(__file__).resolve().parent.parent
+        # os.path.join(BASE_DIR)
+        print('CURRENT DIRECTORY : ' + str(os.path.join(os.getcwd())))
         command = 'python C:/Users/sewon/django_test/mytestsite/bg_removal/u2net_test.py ' + str(file_url)
         os.system(command)
         programFinish = time.time()

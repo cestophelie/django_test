@@ -91,7 +91,7 @@ DATABASES = {
         'USER' : 'admin',
         'PASSWORD': 'luvmyself42^^',  # MySQL 패스워드
         # 'HOST': '13.209.76.218',
-        'HOST' : 'bg-removal.cgwtcvieozxk.ap-northeast-2.rds.amazonaws.com',
+        'HOST': 'bg-removal.cgwtcvieozxk.ap-northeast-2.rds.amazonaws.com',
         'PORT': "3306"
         # 'HOST': '127.0.0.1',
         # 'PORT': ""
