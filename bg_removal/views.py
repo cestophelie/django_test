@@ -90,9 +90,9 @@ class PostViewset(viewsets.ModelViewSet):
         Subs = Post.objects.create(title=userAccount, image=db_file_url)
         Subs.save()
 
-        #thread = threading.Thread(target=self.hiya, args=(file_url, programStart1))
-        #thread.daemon = True
-        #thread.start()
+        thread = threading.Thread(target=self.hiya, args=(file_url, programStart1))
+        thread.daemon = True
+        thread.start()
 
         return Response(data='heyhey')
         # return Response(data=str(testimage))
