@@ -22,7 +22,7 @@ from data_loader import SalObjDataset
 from model import U2NETP  # small version u2net 4.7 MB
 
 # 주피터에서 처리했던 부분
-import cv2
+# import cv2
 import sys
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
