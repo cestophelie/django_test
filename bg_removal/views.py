@@ -103,7 +103,8 @@ class PostViewset(viewsets.ModelViewSet):
         # BASE_DIR = Path(__file__).resolve().parent.parent
         # os.path.join(BASE_DIR)
         print('CURRENT DIRECTORY : ' + str(os.path.join(os.getcwd())))
-        command = 'python C:/Users/sewon/django_test/mytestsite/bg_removal/u2net_test.py ' + str(file_url)
+        # command = 'python C:/Users/sewon/django_test/mytestsite/bg_removal/u2net_test.py ' + str(file_url)
+        command = 'python /srv/mytestsite/bg_removal/u2net_test.py ' + str(file_url)
         os.system(command)
         programFinish = time.time()
         print('duration of image processing : ')
