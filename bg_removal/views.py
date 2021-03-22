@@ -85,15 +85,20 @@ class PostViewset(viewsets.ModelViewSet):
         directory = os.path.join(os.getcwd(), 'bg_removal/images' + os.sep)  # + os.sep 이거 붙여줘야함
         img.save(directory + file_name + '.jpg')  # image 폴더에 저장
 
+        command = 'python /srv/mytestsite/bg_removal/u2net_test.py ' + str(file_url)
+        os.system(command)
+        programFinish = time.time()
+
         # DB 테이블에 직접 값 넣어주기
         db_file_url = file_url
         Subs = Post.objects.create(title=userAccount, image=db_file_url)
         Subs.save()
 
-        thread = threading.Thread(target=self.hiya, args=(file_url, programStart1))
-        thread.daemon = True
-        thread.start()
-
+        # thread = threading.Thread(target=self.hiya, args=(file_url, programStart1))
+        # thread.daemon = True
+        # thread.start()
+        print('duration of image processing : ')
+        print(programFinish - programStart1)
         return Response(data='heyhey')
         # return Response(data=str(testimage))
 

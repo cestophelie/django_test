@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import pymysql
-
+#
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bg_removal',
         # 'USER': 'root',  # MySQL 사용자 계정
-        'USER' : 'admin',
+        'USER': 'admin',
         'PASSWORD': 'luvmyself42^^',  # MySQL 패스워드
         # 'HOST': '13.209.76.218',
         'HOST': 'bg-removal.cgwtcvieozxk.ap-northeast-2.rds.amazonaws.com',
