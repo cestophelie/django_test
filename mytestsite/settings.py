@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import pymysql
-#
-pymysql.install_as_MySQLdb()
+# import pymysql
+
+# pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,14 +87,14 @@ DATABASES = {
         # 여기에 MySQL 추가하기
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bg_removal',
-        # 'USER': 'root',  # MySQL 사용자 계정
-        'USER': 'admin',
+        'USER': 'root',  # MySQL 사용자 계정
+        # 'USER': 'admin',
         'PASSWORD': 'luvmyself42^^',  # MySQL 패스워드
         # 'HOST': '13.209.76.218',
-        'HOST': 'bg-removal.cgwtcvieozxk.ap-northeast-2.rds.amazonaws.com',
-        'PORT': "3306"
-        # 'HOST': '127.0.0.1',
-        # 'PORT': ""
+        # 'HOST': 'bg-removal.cgwtcvieozxk.ap-northeast-2.rds.amazonaws.com',
+        # 'PORT': "3306"
+        'HOST': '127.0.0.1',
+        'PORT': ""
     }
 }
 
