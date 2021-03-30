@@ -9,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         # fields = ['title']  # 이렇게 단일 필드인 경우는 왜인지 모르겠는데 튜플을 인식하지 않는다. 리스트로 보낸다.
-        fields = ('title', 'image')
+        fields = ('title', 'category', 'image')
 
 
 class AccountsSerializer(serializers.ModelSerializer):
